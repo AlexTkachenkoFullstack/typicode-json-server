@@ -1,3 +1,6 @@
+1.Get a full fake REST API with zero coding in less than 30 seconds (seriously)
+https://github.com/typicode/json-server#cli-usage
+
 # Parcel template
 
 Этот проект был создан при помощи Parcel. Для знакомства и настройки
