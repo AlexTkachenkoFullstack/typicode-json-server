@@ -1,16 +1,24 @@
-const item = {
-    id: 1,
-    title: "Car",
-    author: "Esenin",
-    ganres: ["classic"],
-    raiting: 6.34
-};
 
-const options = {
+
+const BASE_URL = "http://localhost:4004/books/";
+const book1 = {
+      title: "Hello",
+}
+
+async function patchBook(book, id) {
+  const options = {
     method: "PATCH",
-    body: JSON.stringify(item), 
+    body: JSON.stringify(book),
     headers: {
-    "Content-Type": "application/json; charset=UTF-8",
+      "Content-Type":"application/json"
+    }
+  }
+  try {
+    const response = await fetch(`${BASE_URL}${id}`, options);
+    const data = await response.json();
+    return data
+  } catch (error) {
+     console.log(error.message)
   }
 }
-fetch("http://localhost:4004/books/1", options)
+patchBook(book1, 14)

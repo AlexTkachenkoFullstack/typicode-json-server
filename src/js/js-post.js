@@ -1,13 +1,31 @@
-const item={
-        "title": "Stone",
-        "author":"Lesya",
-        "ganres": ["story"],
-        "raiting":6.34}
-const options = {
-    method: "POST",
-    body: JSON.stringify(item),
-    headers: {
-    "Content-Type": "application/json; charset=UTF-8",
-  },
+
+
+const book1 = {
+      title: "Folk",
+      author: "Hawkins",
+      ganres: [
+        "classic"
+      ],
+      raiting: 8.74
 }
-fetch("http://localhost:4004/books", options)
+   
+
+const BASE_URL = 'http://localhost:4004/books/'
+async function postBook(book) {
+  const option = {
+    method: 'POST',
+    body: JSON.stringify(book),
+    headers: {
+      'Content-Type':'application/json'
+    }
+  }
+  try {
+    const response = await fetch(`${BASE_URL}`, option);
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+postBook(book1).then(data=>{console.log(data.id)})
